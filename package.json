@@ -1,6 +1,6 @@
 {
   "name": "yuque-hexo-fix-img",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A downloader for articles from yuque",
   "main": "index.js",
   "scripts": {
