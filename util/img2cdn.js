@@ -162,7 +162,7 @@ async function img2Cos(article) {
         url,
       };
     } catch (e) {
-      out.error('访问COS出错，请检查配置');
+      out.error(`访问COS出错，请检查配置: ${e}`);
       process.exit(-1);
     }
   });
