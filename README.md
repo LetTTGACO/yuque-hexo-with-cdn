@@ -1,4 +1,4 @@
-# yuque-hexo
+# yuque-hexo-with-cdn
 
 [![NPM version][npm-image]][npm-url]
 [![build status][gitflow-image]][gitflow-url]
