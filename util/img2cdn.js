@@ -28,19 +28,24 @@ const imageUrlRegExp = /!\[(.*?)]\((.*?)\)/mg;
  */
 async function img2Buffer(yuqueImgUrl) {
   return await new Promise(async function(resolve) {
-    await superagent
-      .get(yuqueImgUrl)
-      .buffer(true)
-      .parse(res => {
-        const buffer = [];
-        res.on('data', chunk => {
-          buffer.push(chunk);
+    try {
+      await superagent
+        .get(yuqueImgUrl)
+        .buffer(true)
+        .parse(res => {
+          const buffer = [];
+          res.on('data', chunk => {
+            buffer.push(chunk);
+          });
+          res.on('end', () => {
+            const data = Buffer.concat(buffer);
+            resolve(data);
+          });
         });
-        res.on('end', () => {
-          const data = Buffer.concat(buffer);
-          resolve(data);
-        });
-      });
+    } catch (e) {
+      out.warn(`invalid img: ${yuqueImgUrl}`);
+      resolve(null);
+    }
   });
 }
 
@@ -133,23 +138,26 @@ async function uploadImg(imgBuffer, fileName) {
  * @return {*}
  */
 async function img2Cos(article) {
-  if (!article.body && !article.title) return article;
   // 1。从文章中获取语雀的图片URL列表
   const matchYuqueImgUrlList = article.body.match(imageUrlRegExp);
   if (!matchYuqueImgUrlList) return article;
   const promiseList = matchYuqueImgUrlList.map(async matchYuqueImgUrl => {
     // 获取真正的图片url
     const yuqueImgUrl = getImgUrl(matchYuqueImgUrl);
-    // console.log('yuqueImgUrl', yuqueImgUrl)
     // 2。将图片转成buffer
     const imgBuffer = await img2Buffer(yuqueImgUrl);
+    if (!imgBuffer) {
+      return {
+        originalUrl: matchYuqueImgUrl,
+        yuqueRealImgUrl: yuqueImgUrl,
+        url: yuqueImgUrl,
+      };
+    }
     // 3。根据buffer文件生成唯一的hash文件名
     const fileName = await getFileName(imgBuffer, yuqueImgUrl);
-    // console.log('fileName', fileName)
     try {
       // 4。检查COS是否存在该文件
       let url = await hasObject(fileName);
-      // console.log('url', url)
       // 5。如果COS已经存在，直接替换；如果COS不存在，则先上传到COS，再将原本的语雀url进行替换
       if (!url) {
         url = await uploadImg(imgBuffer, fileName);

@@ -184,6 +184,8 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 
 - 如果遇到上传到语雀的图片无法加载的问题，可以考虑开启imgCdn配置或者参考这个处理方式 [#41](https://github.com/x-cold/yuque-hexo/issues/41)
 
+- 在语雀编辑器中书写时，如有特殊需求，需要在某段文字中插入markdown格式的图片路径，并且不需要渲染成图片，请用行内代码进行包裹
+
 # Example
 
 - yuque to hexo: [x-cold/blog](https://github.com/x-cold/blog/blob/master/package.json)
