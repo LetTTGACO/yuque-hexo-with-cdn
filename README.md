@@ -116,9 +116,9 @@ imgCdn 语雀图片转COS（对象存储）配置说明
 ## Install
 
 ```bash
-npm i -g yuque-hexo
+npm i -g yuque-hexo-with-cdn
 # or
-npm i --save-dev yuque-hexo
+npm i --save-dev yuque-hexo-with-cdn
 ```
 
 ## Sync
@@ -191,72 +191,7 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 
 # Changelog
 
-### v1.8.0
-- 🔥 支持自定义的适配器 adapter，具体查看 [配置示例](https://github.com/x-cold/yuque-hexo/tree/master/test/custom-adapter-project)，如果需要实现类似图床上传的功能，可以参考[文章](https://juejin.cn/post/6875192087705288718)
 
-### v1.7.0
+### v1.0.0
 
-- 🔥 支持配置 lastGeneratePath，同步文章后会记录一个时间戳，下一次同步文档时不再清空全部文档，只同步修改时间大于这个时间戳的文档
-- 🔥 支持语雀提示区块语法
-- 🐸 修复 front-matter 中 “:” 等特殊字符会导致文章无法正常生成
-- 🐸 由于 [prettier 不再支持 Node 8](https://github.com/prettier/eslint-config-prettier/issues/140)，markdown 格式化仅在 node 版本 >= 10 生效
-- 🐸 现在必须配置 YUQUE_TOKEN 工具才能正常工作
-
-### v1.6.5
-
-- 🔥 支持过滤 public 文章
-- 🔥 生成的 markdown 自动格式化
-- 🔥 移除去除语雀的锚点
-
-### v1.6.4
-
-- 🐸 修复多行 <br /> 的[问题](https://github.com/x-cold/yuque-hexo/pull/59)
-
-### v1.6.3
-
-- 🔥 支持嵌套的 categories 解析 #56
-- 🐸 使用 [filenamify](https://github.com/sindresorhus/filenamify) 修复因为特殊字符的标题，生成非法的文件名导致的程序错误
-
-### v1.6.2
-
-- 🔥 使用 slug 自定义 [urlname](https://github.com/x-cold/yuque-hexo/pull/37)
-
-### v1.6.1
-
-- 🐸 修复 tags 格式化[问题](https://github.com/x-cold/yuque-hexo/issues/31)
-
-### v1.6.0
-
-- 🐸 修复 descrption 导致的 front-matter 解析错误[问题](https://github.com/x-cold/yuque-hexo/issues/27#issuecomment-490138318)
-- 🔥 支持私有仓库同步
-- 🔥 使用语雀官方的 SDK，支持 YUQUE_TOKEN，可以解除 API 调用次数限制
-
-### v1.5.0
-
-- 支持自定义 front-matter
-
-### v1.4.3
-
-- 支持过滤未发布文章 `onlyPublished`
-
-### v1.4.2
-
-- 支持纯 markdown 导出
-- 支持请求并发数量参数 `concurrency`
-
-### v1.4.0
-
-- 升级项目架构，增强扩展性，支持自定义 adpter
-
-### v1.3.1
-
-- 修复 front-matter 处理格式问题
-
-### v1.2.1
-
-- 修复 windows 环境下命令行报错的问题
-- 支持自定义文件夹和博客文件命名
-
-### v1.1.1
-
-- 支持 hexo-front-matter，可以在文章中编辑 tags / date 等属性
+- 支持自动上传语雀图片到COS，并替换
