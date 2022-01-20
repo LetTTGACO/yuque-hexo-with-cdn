@@ -192,6 +192,6 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 # Changelog
 
 
-### v1.0.0
+### v1.1.0
 
 - 支持自动上传语雀图片到COS，并替换
