@@ -149,7 +149,7 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 ```
 
 ## Best practice
-
+- [语雀云端写作Hexo+Github Actions+COS持续集成](https://www.yuque.com/1874w/1874.cool/roeayv)
 - [Hexo 博客终极玩法：云端写作，自动部署](https://www.yuque.com/u46795/blog/dlloc7)
 - [Hexo：语雀云端写作 Github Actions 持续集成](https://www.zhwei.cn/hexo-github-actions-yuque/)
 
