@@ -18,6 +18,7 @@
 [download-url]: https://npmjs.org/package/yuque-hexo
 
 A downloader for articles from yuque（语雀知识库同步工具）
+本插件改造自[hexo](https://github.com/hexojs/hexo)，目前x-code本人已将该方案合并至主分支，可直接使用[hexo](https://github.com/hexojs/hexo)进行配置
 
 # Usage
 
@@ -194,6 +195,6 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 # Changelog
 
 
-### v1.1.0
+### v1.1.2
 
-- 支持自动上传语雀图片到COS，并替换
+- 支持自动上传语雀图片到COS，并替换原链接
