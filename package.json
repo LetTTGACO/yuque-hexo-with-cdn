@@ -1,7 +1,7 @@
 {
   "name": "yuque-hexo-with-cdn",
-  "version": "1.1.2",
-  "description": "A downloader for articles from yuque",
+  "version": "1.2.0",
+  "description": "A downloader for articles from yuque with imgCdn",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf coverage",
@@ -13,17 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/x-cold/yuque-hexo.git"
+    "url": "git+https://github.com/LetTTGACO/yuque-hexo-with-cdn.git"
   },
   "bin": {
     "yuque-hexo": "bin/yuque-hexo.js"
   },
-  "author": "x-cold <lxstart@outlook.com>",
+  "author": "1874",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/x-cold/yuque-hexo/issues"
+    "url": "https://github.com/LetTTGACO/yuque-hexo-with-cdn/issues"
   },
-  "homepage": "https://github.com/x-cold/yuque-hexo#readme",
+  "homepage": "https://github.com/LetTTGACO/yuque-hexo-with-cdn#readme",
   "dependencies": {
     "@yuque/sdk": "^1.1.1",
     "ali-oss": "6.8.0",
