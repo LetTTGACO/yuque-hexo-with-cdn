@@ -5,7 +5,9 @@ const Entities = require('html-entities').AllHtmlEntities;
 const FrontMatter = require('hexo-front-matter');
 const { formatDate, formatRaw } = require('../util');
 const { img2Cdn } = require('../util/img2cdn');
+const urlReplace = require('../util/urlReplace');
 const config = require('../config');
+const out = require('../lib/out');
 
 
 const entities = new Entities();
@@ -67,6 +69,14 @@ module.exports = async function(post) {
   // 语雀img转成自己的cdn图片
   if (config.imgCdn.enabled) {
     post = await img2Cdn(post);
+  }
+  // 链接替换
+  if (config.urlReplace.enabled) {
+    if (config.urlReplace.originalUrl) {
+      post = await urlReplace(post);
+    } else {
+      out.warn('配置错误：urlReplace.originalUrl不能为空');
+    }
   }
   // matter 解析
   const parseRet = parseMatter(post.body);

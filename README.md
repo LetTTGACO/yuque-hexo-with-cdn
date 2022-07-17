@@ -85,20 +85,21 @@ A downloader for articles from yuque（语雀知识库同步工具）
 }
 ```
 
-| 参数名        | 含义                                 | 默认值               |
-| ------------- | ------------------------------------ | -------------------- |
-| postPath      | 文档同步后生成的路径                 | source/\_posts/yuque |
-| cachePath     | 文档下载缓存文件                     | yuque.json           |
-| lastGeneratePath | 上一次同步结束的时间戳的文件             |                       |
-| mdNameFormat  | 文件名命名方式 (title / slug)        | title                |
-| adapter       | 文档生成格式 (hexo/markdown)         | hexo                 |
-| concurrency   | 下载文章并发数                       | 5                    |
-| baseUrl       | 语雀 API 地址                        | -                    |
-| login         | 语雀 login (group), 也称为个人路径   | -                    |
-| repo          | 语雀仓库短名称，也称为语雀知识库路径 | -                    |
-| onlyPublished | 只展示已经发布的文章                 | false                |
-| onlyPublic    | 只展示公开文章                       | false                |
-| imgCdn        | 语雀图片转CDN配置                    |                |
+| 参数名        | 含义                        | 默认值               |
+| ------------- |---------------------------| -------------------- |
+| postPath      | 文档同步后生成的路径                | source/\_posts/yuque |
+| cachePath     | 文档下载缓存文件                  | yuque.json           |
+| lastGeneratePath | 上一次同步结束的时间戳的文件            |                       |
+| mdNameFormat  | 文件名命名方式 (title / slug)    | title                |
+| adapter       | 文档生成格式 (hexo/markdown)    | hexo                 |
+| concurrency   | 下载文章并发数                   | 5                    |
+| baseUrl       | 语雀 API 地址                 | -                    |
+| login         | 语雀 login (group), 也称为个人路径 | -                    |
+| repo          | 语雀仓库短名称，也称为语雀知识库路径        | -                    |
+| onlyPublished | 只展示已经发布的文章                | false                |
+| onlyPublic    | 只展示公开文章                   | false                |
+| imgCdn        | 语雀图片转CDN配置                |                |
+| urlReplace    | 链接识别替换                    |                |
 > slug 是语雀的永久链接名，一般是几个随机字母。
 
 imgCdn 语雀图片转图床配置说明
@@ -137,7 +138,25 @@ imgCdn 语雀图片转图床配置说明
 >
 > 目录名前后都不需要加斜杠
 
+urlReplace 链接替换说明
 
+| 参数名        | 含义                                 | 默认值               |
+| ------------- | ------------------------------------ | -------------------- |
+| enabled       | 是否开启                           | false |
+| originalUrl   | 需要替换的链接                           | '' |
+| replaceUrl    | 替换后的链接                           | '' |
+> 使用场景 说明
+> 链接替换功能是针对于在语雀写作时插入之前文章的链接， 但是在部署到hexo博客后，在博客上点击访问时也会跳转到语雀
+>
+> 虽然无伤大雅，但还是提供了这个功能，让博客上跳转链接的文章依然跳博客的文章
+
+> Example:
+> 
+> originalUrl: 'https://www.yuque.com/1874w/1874.cool'
+> 
+> replaceUrl: 'https://1874.cool'
+> 
+> `[语雀的文章](https://www.yuque.com/1874w/1874.cool/roeayv)` => `[博客的文章](https://1874.cool/roeayv)`
 
 ## Install
 
@@ -215,6 +234,12 @@ DEBUG=yuque-hexo.* yuque-hexo sync
 - yuque to github repo: [txd-team/monthly](https://github.com/txd-team/monthly/blob/master/package.json)
 
 # Changelog
+### v1.2.2
+
+- 新增链接替换功能
+### v1.2.1
+
+- 修复不使用图床配置时报错的问题
 
 ### v1.2.0
 

@@ -27,6 +27,11 @@ const defaultConfig = {
     region: '',
     prefixKey: '',
   },
+  urlReplace: {
+    enabled: false,
+    originalUrl: '',
+    replaceUrl: '',
+  },
 };
 
 function loadConfig() {
